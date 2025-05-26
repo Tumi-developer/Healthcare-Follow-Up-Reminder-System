@@ -5,8 +5,10 @@ Vibe Coding Hackathon — For the #1MillionDevs Movement!
 
 A comprehensive web application designed to help healthcare providers, clinics, and private doctors manage patient follow-up appointments and send automated reminders via multiple communication channels.
 
-Health-tech reminder system pitch deck presentation link.
+Health-tech reminder system pitch deck presentation link:
 https://www.canva.com/design/DAGoiwanA4E/h49oAx75iv2x5Q3CvMACTw/view?utm_content=DAGoiwanA4E&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5b57750a3a
+
+Submission link: https://healthcare-follow-up-reminder-system.netlify.app/
 
 ## 🌟 Features
 
