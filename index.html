@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthRemind - Follow-Up System</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                🏥 HealthRemind
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span>
+                <span id="theme-text">Dark Mode</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-patients">0</div>
+                <div class="stat-label">Total Patients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pending-reminders">0</div>
+                <div class="stat-label">Pending Reminders</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="sent-today">0</div>
+                <div class="stat-label">Sent Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="overdue-count">0</div>
+                <div class="stat-label">Overdue</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="appointment-form">
+                <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Schedule Follow-Up Reminder</h3>
+                
+                <form id="reminder-form">
+                    <div class="form-group">
+                        <label class="form-label">Patient Name *</label>
+                        <input type="text" class="form-input" id="patient-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Phone Number *</label>
+                        <input type="tel" class="form-input" id="phone" required placeholder="+1234567890">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email (Optional)</label>
+                        <input type="email" class="form-input" id="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Follow-Up Date *</label>
+                        <input type="datetime-local" class="form-input" id="followup-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Reminder Method *</label>
+                        <select class="form-select" id="reminder-method" required>
+                            <option value="">Select Method</option>
+                            <option value="sms">SMS</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="email">Email</option>
+                            <option value="call">Phone Call</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Reminder Time</label>
+                        <select class="form-select" id="reminder-time">
+                            <option value="24">24 hours before</option>
+                            <option value="48">48 hours before</option>
+                            <option value="72">72 hours before</option>
+                            <option value="168">1 week before</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Doctor/Clinic</label>
+                        <input type="text" class="form-input" id="doctor" placeholder="Dr. Smith / ABC Clinic">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-input" id="notes" rows="3" placeholder="Additional instructions or notes..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        📅 Schedule Reminder
+                    </button>
+                </form>
+            </div>
+
+            <div class="reminder-list">
+                <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Upcoming Reminders</h3>
+                <div id="reminders-container">
+                    <!-- Reminders will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Send Reminder Modal -->
+    <div class="modal" id="send-modal">
+        <div class="modal-content gold-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Send Reminder</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modal-body">
+                <!-- Modal content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span id="notification-text"></span>
+    </div>
+
+    <script src="script.js"></script> 
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Tumisang. All rights reserved.</p>
+            <p>Follow us on <a href="https://twitter.com/HealthRemind" target="_blank">Twitter</a> 
+              | <a href="https://facebook.com/HealthRemind" target="_blank">Facebook</a> 
+              | <a href="https://instagram.com/HealthRemind" target="_blank">Instagram</a></p>  
+        </div>  
+    </footer>
+
+</body>
+</html>

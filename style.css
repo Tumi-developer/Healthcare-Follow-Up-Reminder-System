@@ -1,0 +1,432 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 1. Animated Gradient Header */
+        .header {
+            background: linear-gradient(270deg, #ffd700, #fffbe6, #e5c100, #fffbe6, #ffd700);
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            box-shadow: 0 4px 24px 0 rgba(255, 215, 0, 0.15);
+        }
+        @keyframes gradientMove {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 2. Logo Glow */
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #5d5733;
+            text-shadow: 0 0 12px #ffd700, 0 0 24px #fffbe6;
+            letter-spacing: 2px;
+            animation: logoGlow 2s alternate infinite;
+        }
+        @keyframes logoGlow {
+            from { text-shadow: 0 0 8px #ffd700, 0 0 16px #fffbe6; }
+            to   { text-shadow: 0 0 24px #ffd700, 0 0 48px #fffbe6; }
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* 3. Card Hover Animation */
+        .stat-card {
+            transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(229, 193, 0, 0.08);
+            border-radius: 1rem;
+            background: #fffbe6;
+            border: 1px solid #ffe066;
+        }
+        .stat-card:hover {
+            transform: scale(1.06) translateY(-6px);
+            box-shadow: 0 8px 32px 0 rgba(229, 193, 0, 0.18);
+            border-color: #ffd700;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+
+        .appointment-form, .reminder-list {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+        }
+
+        /* 4. Button Shine Animation */
+        .btn-primary {
+            background: linear-gradient(90deg, #ffd700 0%, #fffbe6 100%);
+            color: #333;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(229, 193, 0, 0.12);
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -75%;
+            width: 50%; height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.7) 100%);
+            transform: skewX(-20deg);
+            transition: left 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .btn-primary:hover::after {
+            left: 120%;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 8px 32px 0 rgba(229, 193, 0, 0.18);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .reminder-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .reminder-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .reminder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .patient-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .reminder-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .reminder-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-sent {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-overdue {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        [data-theme="dark"] .status-pending {
+            background: #451a03;
+            color: #fbbf24;
+        }
+
+        [data-theme="dark"] .status-sent {
+            background: #064e3b;
+            color: #34d399;
+        }
+
+        [data-theme="dark"] .status-overdue {
+            background: #7f1d1d;
+            color: #f87171;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: var(--success-color);
+        }
+
+        .notification.error {
+            background: var(--danger-color);
+        }
+
+        /* 7. Notification Gold Border */
+        .notification {
+            border-left: 6px solid #ffd700;
+            background: #fffbe6;
+            color: #333;
+            box-shadow: 0 2px 8px rgba(229, 193, 0, 0.12);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 5. Modal Animation */
+        .modal {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+        }
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            animation: modalIn 0.5s cubic-bezier(.25,.8,.25,1);
+            border-radius: 1.5rem;
+            border: 2px solid #ffd700;
+            background: #fffbe6;
+        }
+        @keyframes modalIn {
+            from { transform: translateY(-40px) scale(0.95); opacity: 0; }
+            to   { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        h3 {
+            background: linear-gradient(90deg, #ffd700 30%, #e5c100 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Gold accent and modal animation */
+        .gold-modal {
+            border: 2px solid #ffd700;
+            background: #fffbe6;
+            box-shadow: 0 8px 32px 0 rgba(229, 193, 0, 0.18);
+            border-radius: 1.5rem;
+            animation: modalIn 0.5s cubic-bezier(.25,.8,.25,1);
+        }
+        .modal-title {
+            background: linear-gradient(90deg, #ffd700 30%, #e5c100 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;  
+            box-shadow: var(--shadow);  
+        }
+
+        footer a {
+            color: #e5c100; /* Lighter gold color for luxury and visibility */
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: #ffd700; /* Even lighter on hover */
+        }
+
